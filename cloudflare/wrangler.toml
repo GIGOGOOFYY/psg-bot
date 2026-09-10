@@ -25,9 +25,15 @@ id = "f88263433da34695b24483b37215958c"
 [vars]
 VERIFY_TOKEN = "mytoken123"
 
+# CRM sync (crmSync.js) — writes new WhatsApp leads into the PSG CRM's crm_clients table
+# (Supabase). Same project + anon key the CRM web app itself uses; crm_clients has an
+# "allow all" RLS policy, same as the CRM app's own direct access.
+SB_URL = "https://qeyeonucnlsmbeomrrwt.supabase.co"
+SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFleWVvbnVjbmxzbWJlb21ycnd0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQxODk0OTksImV4cCI6MjA5OTc2NTQ5OX0.SmacOxNWOR4HLCOQf_gkHYHFTqBWMDNWrpFAKHP5nns"
+
 # Public URL of the always-on whatsapp-listener/ service (personal-number bridge — see
 # README-CLOUDFLARE.md "Personal-number channel" section). Leave blank until that's deployed;
 # the "listen" admin command just reports it's unconfigured until this is set.
-LISTENER_BASE_URL = "https://index-reverse-lasting-cingular.trycloudflare.com"
+LISTENER_BASE_URL = "https://price-arabia-confidential-another.trycloudflare.com"
 # LISTENER_API_KEY is a secret, not a var — set with: wrangler secret put LISTENER_API_KEY
 # (must match the same value in whatsapp-listener/.env)

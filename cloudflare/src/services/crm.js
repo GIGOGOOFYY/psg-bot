@@ -2,6 +2,7 @@
 // Table schema: migrations/0001_init.sql
 
 import { addInquiry, addCustomerLead } from './sheets.js'
+import { pushLeadToCrm } from './crmSync.js'
 
 export async function saveInquiry(env, phone, message, response) {
   await env.DB.prepare(
@@ -40,6 +41,12 @@ export async function saveCustomerLead(env, lead) {
     await addCustomerLead(env, lead)
   } catch (e) {
     console.log('Sheets lead error:', e.message)
+  }
+
+  try {
+    await pushLeadToCrm(env, lead)
+  } catch (e) {
+    console.log('CRM sync error:', e.message)
   }
 }
 
